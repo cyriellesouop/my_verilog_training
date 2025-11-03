@@ -1,0 +1,1 @@
+set_property LOC SLICE_X2Y1 [get_cells my_reg_reg]
