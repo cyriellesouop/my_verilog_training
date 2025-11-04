@@ -135,12 +135,11 @@ always@(posedge clk) begin
     stateRD <= IDLE;
 
   end else begin
-    case(stateWR) 
+    case(stateRD) 
             IDLE : if (arvalid)
                        stateRD <= RD_DATA;
             RD_DATA : if(rready)
                         stateRD <= IDLE;
-            
     endcase
   end
 
@@ -148,7 +147,7 @@ end
 
 //data flow
 always@(*) begin
-  case(stateWR)
+  case(stateRD)
      IDLE: begin
              raddr = araddr;
 	     arready = 1'b1;
@@ -176,7 +175,5 @@ always@(*) begin
              
      endcase
 end
-
-
 
 endmodule
